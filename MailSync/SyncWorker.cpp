@@ -491,43 +491,43 @@ vector<shared_ptr<Folder>> SyncWorker::syncFoldersAndLabels()
     // create required Mailspring folders if they don't exist
     // TODO: Consolidate this into role association code below, and make it
     // use the same business logic as creating / updating folders from tasks.
-    vector<string> mailspringFolders{"Snoozed"};
+    //vector<string> mailspringFolders{"Snoozed"};
 
-    for (string mailspringFolder : mailspringFolders) {
-        string mailspringRole = mailspringFolder;
-        transform(mailspringRole.begin(), mailspringRole.end(), mailspringRole.begin(), ::tolower);
+    //for (string mailspringFolder : mailspringFolders) {
+    //    string mailspringRole = mailspringFolder;
+    //    transform(mailspringRole.begin(), mailspringRole.end(), mailspringRole.begin(), ::tolower);
 
-        bool found = false;
-        for (int ii = ((int)remoteFolders->count()) - 1; ii >= 0; ii--) {
-            IMAPFolder * remote = (IMAPFolder *)remoteFolders->objectAtIndex(ii);
-            string remoteRole = MailUtils::roleForFolder(mainPrefix, remote);
-            if (remoteRole == mailspringRole) {
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            if (!ensuredRoot) {
-                ensureRootMailspringFolder(remoteFolders);
-                ensuredRoot = true;
-            }
-            
-            auto components = Array::array();
-            components->addObject(AS_MCSTR(MAILSPRING_FOLDER_PREFIX_V2));
-            components->addObject(AS_MCSTR(mailspringFolder));
-            String * desiredPath = session.defaultNamespace()->pathForComponents(components);
-            session.createFolder(desiredPath, &err);
-            if (err) {
-                logger->error("Could not create required Mailspring folder: {}. {}", desiredPath->UTF8Characters(), ErrorCodeToTypeMap[err]);
-                continue;
-            }
-            logger->error("Created required Mailspring folder: {}.", desiredPath->UTF8Characters());
-            IMAPFolder * fake = new IMAPFolder();
-            fake->setPath(desiredPath);
-            fake->setDelimiter(session.defaultNamespace()->mainDelimiter());
-            remoteFolders->addObject(fake);
-        }
-    }
+    //    bool found = false;
+    //    for (int ii = ((int)remoteFolders->count()) - 1; ii >= 0; ii--) {
+    //        IMAPFolder * remote = (IMAPFolder *)remoteFolders->objectAtIndex(ii);
+    //        string remoteRole = MailUtils::roleForFolder(mainPrefix, remote);
+    //        if (remoteRole == mailspringRole) {
+    //            found = true;
+    //            break;
+    //        }
+    //    }
+    //    if (!found) {
+    //        if (!ensuredRoot) {
+    //            ensureRootMailspringFolder(remoteFolders);
+    //            ensuredRoot = true;
+    //        }
+    //        
+    //        auto components = Array::array();
+    //        components->addObject(AS_MCSTR(MAILSPRING_FOLDER_PREFIX_V2));
+    //        components->addObject(AS_MCSTR(mailspringFolder));
+    //        String * desiredPath = session.defaultNamespace()->pathForComponents(components);
+    //        session.createFolder(desiredPath, &err);
+    //        if (err) {
+    //            logger->error("Could not create required Mailspring folder: {}. {}", desiredPath->UTF8Characters(), ErrorCodeToTypeMap[err]);
+    //            continue;
+    //        }
+    //        logger->error("Created required Mailspring folder: {}.", desiredPath->UTF8Characters());
+    //        IMAPFolder * fake = new IMAPFolder();
+    //        fake->setPath(desiredPath);
+    //        fake->setDelimiter(session.defaultNamespace()->mainDelimiter());
+    //        remoteFolders->addObject(fake);
+    //    }
+    //}
     
     // sync with the local store
     vector<shared_ptr<Folder>> foldersToSync{};
@@ -663,6 +663,12 @@ vector<shared_ptr<Folder>> SyncWorker::syncFoldersAndLabels()
 
 void SyncWorker::syncFolderUIDRange(Folder & folder, Range range, bool heavyInitialRequest, vector<shared_ptr<Message>> * syncedMessages)
 {
+	//std::string::size_type pos = folder.path().find("Snoozed)");
+	//if (pos == std::string::npos)
+	//{
+	//	logger->info("syncFolderUIDRange for {}, UIDs: {} - {}, Heavy: {} return", folder.path(), range.location, range.location + range.length, heavyInitialRequest);
+	//	return;
+	//}
     // Safety check: "0" is not a valid start and causes the server to return only the last item
     if (range.location == 0) {
         range.location = 1;

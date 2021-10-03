@@ -120,7 +120,7 @@ struct CArg: public option::Arg
 
 // Important do not change these without updating result code 2 check below
 #define USAGE_STRING "USAGE: CONFIG_DIR_PATH=/path IDENTITY_SERVER=https://id.firemail.wang mailsync [options]\n\nOptions:"
-#define USAGE_IDENTITY "  --identity, -i  \tRequired: Mailspring Identity JSON with credentials."
+#define USAGE_IDENTITY "  --identity, -i  \tRequired: Firemail Identity JSON with credentials."
 
 enum  optionIndex { UNKNOWN, HELP, IDENTITY, ACCOUNT, MODE, ORPHAN, VERBOSE };
 const option::Descriptor usage[] =
@@ -515,15 +515,21 @@ int main(int argc, const char * argv[]) {
     
 string exectuablePath = argv[0];
 
-#ifndef DEBUG
+#ifndef NDEBUG
     // check path to executable in an obtuse way, prevent re-use of
     // Mailspring-Sync in products / forks not called Mailspring.
     transform(exectuablePath.begin(), exectuablePath.end(), exectuablePath.begin(), ::tolower);
-    string headerMessageId = string(USAGE_STRING).substr(59, 4) + string(USAGE_IDENTITY).substr(33, 6);
+    string headerMessageId = string(USAGE_STRING).substr(56, 4) + string(USAGE_IDENTITY).substr(33, 4);
     if (exectuablePath.find(headerMessageId) == string::npos) {
         return 2;
     }
+
+_putenv("CONFIG_DIR_PATH=C:\\Users\\Administrator\\AppData\\Roaming\\Firemail-dev");
+_putenv("IDENTITY_SERVER=https://id.firemail.wang");
+_putenv("IDENTITY_SERVER=unknown");
 #endif
+
+
 
     // initialize the stanford exception handler
     exceptions::setProgramNameForStackTrace(exectuablePath.c_str());

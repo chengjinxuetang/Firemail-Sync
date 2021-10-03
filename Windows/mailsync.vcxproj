@@ -64,6 +64,31 @@ _TIMESPEC_DEFINED;SQLITE_ENABLE_FTS5;CURL_STATICLIB;SPDLOG_WCHAR_FILENAMES;%(Pre
       <AdditionalLibraryDirectories>.\Externals\lib;..\Vendor\mailcore2\Externals;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>legacy_stdio_definitions.lib;libcurl_a.lib;libxml2.lib;zlib.lib;iconv_a.lib;dbghelp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;Dnsapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\lib\libtidy.dll $(SolutionDir)Debug\libtidy.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\lib\libxml2.dll $(SolutionDir)Debug\libxml2.dll
+echo f|xcopy /r /y  ..\Vendoecho f|xcopy /r /y  ..\Vendor\mailcore2\Externals\lib\libtidy.dll $(SolutionDir)Debug\libtidy.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\lib\libxml2.dll $(SolutionDir)Debug\libxml2.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\bin\libcryptoMDd.dll $(SolutionDir)Debug\libcryptoMDd.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\lib\zlib.dll $(SolutionDir)Debug\zlib.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\lib\libctemplate.dll $(SolutionDir)Debug\libctemplate.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\dll\x86\pthreadVC2.dll $(SolutionDir)Debug\pthreadVC2.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\bin\icuin54.dll $(SolutionDir)Debug\icuin54.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\bin\icuuc54.dll $(SolutionDir)Debug\icuuc54.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\lib\sasl2.dll $(SolutionDir)Debug\sasl2.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\bin\libiconv2.dll $(SolutionDir)Debug\libiconv2.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\bin\libsslMDd.dll $(SolutionDir)Debug\libsslMDd.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\bin\icudt54.dll $(SolutionDir)Debug\icudt54.dllr\libetpan\third-party\bin\libcryptoMD.dll $(SolutionDir)Debug\libcryptoMD.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\lib\zlib.dll $(SolutionDir)Debug\zlib.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\lib\libctemplate.dll $(SolutionDir)Debug\libctemplate.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\dll\x86\pthreadVC2.dll $(SolutionDir)Debug\pthreadVC2.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\bin\icuin54.dll $(SolutionDir)Debug\icuin54.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\bin\icuuc54.dll $(SolutionDir)Debug\icuuc54.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\lib\sasl2.dll $(SolutionDir)Debug\sasl2.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\bin\libiconv2.dll $(SolutionDir)Debug\libiconv2.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\bin\libsslMD.dll $(SolutionDir)Debug\libsslMD.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\bin\icudt54.dll $(SolutionDir)Debug\icudt54.dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -85,7 +110,19 @@ _TIMESPEC_DEFINED;SQLITE_ENABLE_FTS5;CURL_STATICLIB;SPDLOG_WCHAR_FILENAMES;%(Pre
       <AdditionalDependencies>legacy_stdio_definitions.lib;libcurl_a.lib;libxml2.lib;zlib.lib;iconv_a.lib;dbghelp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;Dnsapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>IF not exist ..\..\app\dist (mkdir ..\..\app\dist) &amp;&amp; COPY .\Release\mailsync.exe ..\..\app\dist\ /Y &amp;&amp; COPY .\Release\mailsync.pdb ..\..\app\dist\ /Y &amp;&amp; COPY .\Release\libetpan.dll ..\..\app\dist\ /Y &amp;&amp; COPY .\Release\mailcore2.dll ..\..\app\dist\ /Y &amp;&amp; COPY .\Release\mailcore2.pdb ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\libetpan\third-party\bin\libiconv2.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\icudt54.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\icuin54.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\icuuc54.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\libctemplate.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\libcryptoMD.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\sasl2.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\libtidy.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\libxml2.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\dll\x86\pthreadVC2.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\libsslMD.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\zlib.dll ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcr100.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcr120.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcp100.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcp120.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcp140.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\vcruntime140.dll" ..\..\app\dist\ /Y &amp;&amp; XCOPY /rhy "C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x86" ..\..\app\dist\ &amp;&amp; CD ..\..\app\dist &amp;&amp; XCOPY *.* ..\</Command>
+      <Command>IF not exist ..\..\app\dist (mkdir ..\..\app\dist) &amp;&amp; COPY .\Release\mailsync.exe ..\..\app\dist\ /Y &amp;&amp; COPY .\Release\mailsync.pdb ..\..\app\dist\ /Y &amp;&amp; COPY .\Release\libetpan.dll ..\..\app\dist\ /Y &amp;&amp; COPY .\Release\mailcore2.dll ..\..\app\dist\ /Y &amp;&amp; COPY .\Release\mailcore2.pdb ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\libetpan\third-party\bin\libiconv2.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\icudt54.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\icuin54.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\icuuc54.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\libctemplate.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\libcryptoMD.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\sasl2.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\libtidy.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\libxml2.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\dll\x86\pthreadVC2.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\bin\libsslMD.dll ..\..\app\dist\ /Y &amp;&amp; COPY ..\Vendor\mailcore2\Externals\lib\zlib.dll ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcr100.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcr120.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcp100.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcp120.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\msvcp140.dll" ..\..\app\dist\ /Y &amp;&amp; COPY "C:\Windows\SysWOW64\vcruntime140.dll" ..\..\app\dist\ /Y &amp;&amp; XCOPY /rhy "C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x86" ..\..\app\dist\ &amp;&amp; CD ..\..\app\dist &amp;&amp; XCOPY *.* ..\
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\lib\libtidy.dll $(SolutionDir)Release\libtidy.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\lib\libxml2.dll $(SolutionDir)Release\libxml2.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\bin\libcryptoMD.dll $(SolutionDir)Release\libcryptoMD.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\lib\zlib.dll $(SolutionDir)Release\zlib.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\lib\libctemplate.dll $(SolutionDir)Release\libctemplate.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\dll\x86\pthreadVC2.dll $(SolutionDir)Release\pthreadVC2.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\bin\icuin54.dll $(SolutionDir)Release\icuin54.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\bin\icuuc54.dll $(SolutionDir)Release\icuuc54.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\lib\sasl2.dll $(SolutionDir)Release\sasl2.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\bin\libiconv2.dll $(SolutionDir)Release\libiconv2.dll
+echo f|xcopy /r /y  ..\Vendor\libetpan\third-party\bin\libsslMD.dll $(SolutionDir)Release\libsslMD.dll
+echo f|xcopy /r /y  ..\Vendor\mailcore2\Externals\bin\icudt54.dll $(SolutionDir)Release\icudt54.dll</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
