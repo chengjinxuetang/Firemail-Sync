@@ -3,6 +3,20 @@ open sourece mail client refer to MailSpring
 
 编译条件
 
+支持VS2017
+
+
+
+
+
+
+
+
+
+
+
+
+
 安装
 VS2015
 VS2013
